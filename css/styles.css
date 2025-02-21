@@ -1,0 +1,905 @@
+.content input {
+    padding: 15px 15px 15px 40px; 
+    width: 300px;
+    border-radius: 10px;
+    margin-top: 10px;
+    border-color: #444;
+    margin-left: 15px;
+}
+
+.search-container {
+    position: relative; 
+}
+
+.search-container i {
+    position: absolute;
+    left: 25px; 
+    top: 60%;
+    transform: translateY(-50%); 
+    color: #444; 
+}
+
+/* dashboard content */
+/* Main container as Flexbox */
+#child-container {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 20px; 
+    justify-content: center; 
+}
+
+/* Style for each payment card */
+.payment-card {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+    flex: 1 1 calc(50% - 20px); 
+    max-width: 350px; 
+    min-width: 220px; 
+}
+
+.payment-card p {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.payment-card p strong {
+    font-weight: bold;
+}
+
+/* Styling for 'Amount' and 'Date' */
+.payment-card p:last-child {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.payment-card:nth-of-type(even) {
+    background-color: #f9f9f9;
+}
+
+.edit {
+    width: 100px;
+    padding: 10px 15px;
+    border-radius: 50px;
+    background-color: green;
+    border: none;
+    justify-self: center;
+    display: column;
+    margin: 5px;
+    margin-top: 50px;
+}
+
+.edit i {
+    font-size: 18px;
+}
+
+.edit:hover {
+    color: white;
+}
+
+.delete {
+    width: 100px;
+    padding: 10px 15px;
+    border-radius: 50px;
+    background-color: red;
+    border: none;
+    justify-self: center;
+    display: column;
+    margin: 5px;
+}
+
+.delete i {
+    font-size: 18px;
+}
+
+.delete:hover {
+    color: white;
+}
+
+.add {
+  padding: 10px 20px;
+  background-color: white;
+  opacity: 0.2;
+  width: 350px;
+  height: 200px; 
+  border-radius: 10px;
+  font-size: 150px; 
+  border-style: dashed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-left: 500px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    justify-content: center;
+    border-radius: 15px;
+}
+
+.modal-content h2 {
+      text-align: center;
+}
+
+input[type="text"] {
+  font-size: 16px; 
+  padding: 10px; 
+  width: 250px; 
+  margin-bottom: 10px; 
+  border-radius: 6px;
+  margin-left: 15px;
+  margin-top: 5px;
+}
+
+input[type="submit"] {
+  font-size: 16px; 
+  padding: 10px 20px; 
+  cursor: pointer; 
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  background-color: #191970;
+  border-radius: 10px;
+  border: none;
+  color: #fff;
+}
+
+input[type="submit"]:hover {
+  background-color: #00bfff;
+}
+
+label {
+  font-size: 18px; 
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* mobile responsive for onfees *****/
+@media (max-width: 768px) {
+  .payment-card {
+      flex: 1 1 100%;
+      max-width: 100%;
+  }
+
+  .add {
+      width: 250px;
+      margin-left: auto;
+      margin-right: auto;
+  }
+
+  .modal-content {
+      width: 80%;
+  }
+
+  input[type="text"], input[type="date"], input[type="submit"] {
+      width: 100%;
+  }
+
+  #sidebar {
+      width: 250px;
+  }
+
+  #main-content {
+      margin-left: 0;
+  }
+
+  #sidebar-toggle {
+      font-size: 28px;
+  }
+
+  .modal-content {
+      width: 90%;
+      padding: 20px;
+  }
+  
+  input[type="text"], input[type="date"], input[type="submit"] {
+      width: 90%;
+  }
+
+  input[type="date"] {
+    width: 82%;
+  }
+
+  input[type="submit"] {
+      padding: 15px 20px;
+  }
+}
+
+
+/* Basic loading screen styles */
+#loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2.5s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Table Styles */  
+table {
+    width: 99%;
+    margin: 20px 0;
+    border: none;
+  }
+
+  th, td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #444; 
+    color: black;
+    box-shadow: rgba(0, 0, 0, 0.2);
+  }
+
+  th {
+    background-color: white; 
+  }
+
+  tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+  }
+
+  tr:nth-child(odd) {
+    background-color: whitesmoke; 
+  }
+
+  .editbalance {
+    background-color: #0000FF;
+    color: #fff;
+    font-size: 17px;
+    border-radius: 25px;
+    width: 120px;
+    padding: 10px 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .editbalance:hover {
+    background-color: #0056b3;
+  }
+
+  td[data-header="button"] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+   /* Responsive Table for Mobile */
+   @media (max-width: 768px) {
+    /* Sidebar toggle */
+    .sidebar {
+        transform: translateX(-250px);
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    table {
+        width: 100%;
+        border: 0;
+    }
+
+    th, td {
+        display: block;
+        padding: 10px;
+        text-align: right;
+        border: none;
+    }
+
+    td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    th {
+        display: none;
+    }
+}
+/* Media Query for mobile screens with width 460px or less */
+@media only screen and (max-width: 460px) {
+   
+    .content {
+        position: relative;
+        z-index: 1; 
+    }
+
+    .content table {
+        width: 100%; 
+        margin: 0; 
+        overflow-x: auto;
+        display: block;
+        white-space: nowrap;
+        z-index: 1; 
+        margin-top: 30px; 
+    }
+
+    .content table th {
+        display: none;
+    }
+
+  
+    .content table tr {
+        display: block;
+        margin-bottom: 10px;
+        border: 1px solid #ddd; 
+    }
+
+    .content table td {
+        display: block;
+        text-align: left;
+        font-size: 12px; 
+        padding: 8px;
+        border: 1px solid #ddd; 
+        position: relative;
+    }
+
+    .content table td::before {
+        content: attr(data-header); 
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+        font-size: 14px; 
+        color: #333; 
+    }
+}
+
+
+/* for the online payment */
+.onpayment {
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center; 
+  align-items: flex-start; 
+  gap: 20px; 
+  padding: 15px; 
+  background-color: white; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+  border-radius: 20px;
+  margin-top: 20px;
+}
+
+.onpayment h2 {
+  width: 100%; 
+  text-align: center; 
+  font-size: 30px;
+  color: #333; 
+  margin-bottom: 20px; 
+}
+
+.child-onpayment {
+  background-color: #f9f9f9; 
+  padding: 12px; 
+  border-radius: 8px; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  width: 350px; 
+  text-align: left; 
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+
+.child-onpayment input {
+  width: 160px;
+  padding: 3px;
+  border: none;
+  background-color: #f9f9f9;
+  color: #555;
+}
+
+.child-onpayment p {
+  margin: 8px 0; 
+  font-size: 15px; 
+  color: #555; 
+}
+
+.child-onpayment img {
+  max-width: 30%; 
+  height: auto; 
+  display: block; 
+  margin: 0 auto; 
+}
+
+.child-onpayment strong {
+  color: #333; 
+}
+
+.approve {
+  background-color: #0000FF;
+  border-radius: 20px;
+  font-size: 15px;
+  color:#fff;
+  width: 100px;
+  margin-left: 10px;
+  border: none;
+  padding: 10px;
+}
+
+.reject {
+  background-color: #FF0000;
+  border-radius: 20px;
+  font-size: 15px;
+  color:#fff;
+  width: 100px;
+  border: none;
+  padding: 10px;
+}
+
+.editb {
+  background-color: #77B254;
+  border-radius: 20px;
+  font-size: 15px;
+  color:#fff;
+  width: 105px;
+  margin-left: 10px;
+  border: none;
+  padding: 10px;
+}
+
+.reject:hover, .approve:hover, .editb:hover {
+  color:#333;
+}
+
+/* mobile responsive */
+/* Mobile-responsive styles */
+@media screen and (max-width: 768px) {
+  .onpayment {
+      flex-direction: column; 
+      align-items: center; 
+  }
+
+  .child-onpayment {
+      width: 90%; 
+      max-width: 400px; 
+  }
+
+  .onpayment h2 {
+      font-size: 20px; 
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .child-onpayment {
+      width: 100%; 
+      padding: 10px; 
+  }
+
+  .onpayment h2 {
+      font-size: 18px; /
+  }
+
+  .child-onpayment p {
+      font-size: 15px; 
+  }
+}
+
+/* overlau image approval */
+
+.zoom-image {
+  width: 150px; 
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.zoom-image:hover {
+  transform: scale(1.1);
+}
+
+.overlay2 {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.overlay2 img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 8px;
+}
+
+.close2 {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close2:hover {
+  color: red;
+}
+
+/* modal for updatingg balance *********/
+.modal1 {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+  padding-top: 60px;
+}
+.modal-content1 {
+  background-color: #fefefe;
+  margin: 3% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 25%;
+  justify-content: center;
+  border-radius: 15px;
+  margin-top: 100px;
+}
+
+.modal-content1 input {
+  padding: 5px;
+  width: 350px;
+  border: none;
+  border-bottom: solid 1px #888 ;
+}
+
+.modal-content1 h2 {
+    text-align: center;
+}
+
+.modal-content1 label {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+/* payment record table ********/
+/* Styling for the search container */
+/* Styling for the search container */
+.search-container1 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 20px; /* Space between search and table */
+  margin-left: 10px;
+  border-radius: 15px;
+}
+
+.search-container1 i {
+  position: absolute;
+  left: 20px; /* Position the icon inside the input */
+  color: #CACACA;
+  font-size: 25px;
+  margin-top: 7px;
+}
+
+.search-container1 input {
+  padding: 15px 15px 15px 35px; /* Add padding to the left for the icon */
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 350px; /* Fixed width for input field */
+  box-sizing: border-box; /* Ensure padding doesn't affect width */
+  box-shadow: 1px 2px 4px 1px rgba(0, 0, 0, 0.1);
+}
+
+
+              /* Styling for the table container */
+#record {
+        max-width: 100%;
+        overflow-x: auto; /* Enables horizontal scrolling on small screens */
+        margin: 20px;
+        background-color: #fff;
+        box-shadow: 2px 4px 8px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Table Styling */
+    .tb1 {
+        width: 100%;
+        border-collapse: collapse; /* Remove spacing between cells */
+        background-color: #f8f8f8; /* Light background color */
+    }
+
+    /* Table Header Styling */
+    .tb1 thead th {
+        background-color: #212121;
+        color: white;
+        padding: 30px;
+        text-align: left;
+        font-size: 16px;
+    }
+
+    /* Table Body Styling */
+    .tb1 tbody td {
+        background-color: #F6F5F2;
+        padding: 20px;
+        text-align: left;
+        font-size: 14px;
+        border: 1px solid #ddd;
+        font-size: 15px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .tb1 thead {
+            display: none; /* Hide headers on smaller screens */
+        }
+
+        .tb1 tbody tr {
+            display: block; /* Display rows as block */
+            margin-bottom: 10px;
+            background-color: #c7c7c7;
+            border-radius: 8px;
+        }
+
+        .tb1 tbody td {
+            display: block;
+            text-align: right;
+            position: relative;
+            padding-left: 50%; /* Offset text to show labels */
+            border: none;
+            font-size: 14px;
+            background-color: #c7c7c7;
+        }
+
+        /* Add pseudo-elements for labels */
+        .tb1 tbody td::before {
+            content: attr(data-label); /* Use data-label attribute for each cell */
+            position: absolute;
+            left: 10px;
+            top: 12px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+    }
+
+
+
+
+/* FOR THE STUDENT CSS STYKE ************/
+#balabce {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 50px;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+#balabce p {
+  font-size: 30px;
+  color: #333;
+  font-weight: bold;
+  text-align: center;
+}
+
+.cbalance {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
+  margin-bottom: 15px;
+}
+
+.cbalance h2 {
+  font-size: 30px;
+  color: #333;
+  margin-left: 20px;
+  margin-top: -25px;
+}
+
+.cbalance h4 {
+  font-size: 35px;
+  color: gray;
+  margin-left: 15px;
+}
+
+#toggleButton {
+  background-color: #255de9;
+  color: white;
+  padding: 20px 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  margin-left: 15px;
+  transition: background-color 0.3s;
+}
+
+#toggleButton:hover {
+  background-color: #042173;
+}
+
+#content {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #555;
+  display: none;
+}
+
+#content p {
+  margin: 0;
+}
+
+select {
+  width: 100%;
+  padding: 10px 20px;
+  margin-top: 10px;
+  font-size: 20px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.hbalance {
+  width: 100%;
+  border-collapse: collapse; /* Remove spacing between cells */
+  background-color: #f8f8f8; /* Light background color */
+}
+
+/* Table Header Styling */
+.hbalance thead th {
+  background-color: #212121;
+  color: white;
+  padding: 30px;
+  text-align: left;
+  font-size: 16px;
+}
+
+/* Table Body Styling */
+.hbalance tbody td {
+  background-color: #F6F5F2;
+  padding: 20px;
+  text-align: left;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  font-size: 15px;
+}
+
+.hidden button {
+  background-color: blue;
+  padding: 15px 20px;
+  width: 30%;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
+}
+
+.hidden button:hover {
+  background-color: #002D62;
+}
+
+
+/********* for adding user ***********/
+.container {
+  display: flex;
+  justify-content: space-between;  
+  gap: 20px; 
+  padding: 20px;
+}
+
+.form-container, .form-container1 {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 45%;
+}
+
+.form-container h2 {
+  text-align: center;
+}
+
+.form-container label {
+  display: block;
+  margin: 8px 0 4px;
+}
+
+.form-container input[type="text"], .form-container input[type="submit"], .form-container input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-container input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  margin-left:7px;
+}
+
+.form-container input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.form-container1 table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.form-container1 th, .form-container1 td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ccc;
+}
+
+.form-container1 th {
+  background-color: #f4f4f4;
+}
