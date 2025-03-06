@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Information</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="shortcut icon" href="../img/blogo.png" type="x-icon">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="menu-container">
+      <button class="burger-button" onclick="toggleSidebar()">☰</button>
+    </div>
+    <div class="dropdown">
+      <button class="dropdown-button"><i class="fa-solid fa-user"></i></button>
+      <div class="dropdown-content">
+        <a href="#">Option 1</a>
+        <a href="#">Option 2</a>
+        <a href="#">Option 3</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="close">
+        <span class="close-sidebar" onclick="toggleSidebar()"><i class="fa-solid fa-arrow-left"></i></span>
+        <img src="../img/blogo.png" alt="Image" class="sidebar-image">
+        <p class="sidebar-text">Your text goes here.</p>
+    </div>
+    
+    <div class="sidebar-content">
+      <a href="#" class="sidebar-item"><i class="fa-solid fa-house"></i>&nbsp; Dashboard</a>
+      <a href="approval.html" class="sidebar-item"><i class="fa-solid fa-credit-card"></i>&nbsp; Online Approval</a>
+      <a href="strecord.html" class="sidebar-item"><i class="fa-solid fa-clipboard-list"></i>&nbsp; Student Information</a>
+      <a href="payrecord.html" class="sidebar-item"><i class="fa-solid fa-clipboard-list"></i>&nbsp; Payment Record</a>
+      <a href="onfees.html" class="sidebar-item"><i class="fa-solid fa-clipboard-list"></i>&nbsp; Ongoing Fees</a>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="strecord">
+      <h1>Student Information</h1>
+      <div class="search-container">
+        <i class="fa-solid fa-magnifying-glass"></i><br><br>
+        <input type="search" id="searchInput" placeholder="Search ID/student here...">
+      </div><br><br>  
+      
+      <table id="dataTable">
+        <thead>
+          <tr>
+            <th>Student ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Birthday</th>
+            <th>Age</th>
+            <th>Civil Status</th>
+            <th>Address</th>
+            <th>Program</th>
+            <th>Year level</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="student-row-0" onclick="togglePayment(0)">
+            <td>s21016623</td>
+            <td>jakmo morri</td>
+            <td>jakma</td>
+            <td>jakmi</td>
+            <td>dsdsd</td>
+            <td>fdfds</td>
+            <td>s</td>
+            <td>dsds</td>
+            <td>fdfdf</td>
+          </tr>
+          <tr id="payment-0" class="payment-details" style="display:none;">
+            <td colspan="9">
+              <table class="list">
+                <thead>
+                  <tr>
+                    <th>Payment Name</th>
+                    <th>Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>tour</td>
+                    <td>1,500</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <tr id="student-row-1" onclick="togglePayment(1)">
+            <td>s21016624</td>
+            <td>jakmo</td>
+            <td>jakma</td>
+            <td>jakmi</td>
+            <td>dsdsd</td>
+            <td>fdfds</td>
+            <td>s</td>
+            <td>dsds</td>
+            <td>fdfdf</td>
+          </tr>
+          <tr id="payment-1" class="payment-details" style="display:none;">
+            <td colspan="9">
+              <table class="list">
+                <thead>
+                  <tr>
+                    <th>Payment Name</th>
+                    <th>Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>tuition</td>
+                    <td>5,000</td>
+                  </tr>
+                  <tr>
+                    <td>Miscellaneous</td>
+                    <td>5,000</td>
+                  </tr>
+                  <tr>
+                    <td>Stage play</td>
+                    <td>350</td>
+                  </tr>
+                  <tr>
+                    <td>Total</td>
+                    <td>10,350</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <!-- More rows as needed -->
+        </tbody>
+      </table>
+      
+      <div id="noRecordMessage" style="display: none;">No record found</div>
+    </div>
+  </div>
+
+  <script>
+    // Function to toggle the payment visibility when a student row is clicked
+    function togglePayment(index) {
+      var paymentRow = document.getElementById("payment-" + index);
+      var currentDisplay = paymentRow.style.display;
+
+      // Toggle the payment row for the clicked student
+      if (currentDisplay === 'none' || currentDisplay === '') {
+        paymentRow.style.display = 'table-row'; // Show the payment row
+      } else {
+        paymentRow.style.display = 'none'; // Hide the payment row
+      }
+    }
+
+    // Search function
+    document.getElementById('searchInput').addEventListener('keyup', function() {
+      var input = this.value.toLowerCase();
+      var rows = document.querySelectorAll('#dataTable tbody tr');
+      var noRecordMessage = document.getElementById('noRecordMessage');
+      var found = false;
+
+      // Loop through all student rows
+      rows.forEach(function(row, index) {
+        if (row.id.startsWith("student-row")) {
+          var cells = row.getElementsByTagName('td');
+          var rowFound = false;
+
+          // Check if any cell in the student row contains the search term
+          for (var i = 0; i < cells.length; i++) {
+            if (cells[i].textContent.toLowerCase().indexOf(input) > -1) {
+              rowFound = true;
+              break;
+            }
+          }
+
+          // If student row matches search term, display it but do not show the payment row yet
+          var paymentRow = document.getElementById("payment-" + index);
+          row.style.display = rowFound ? '' : 'none'; // Show student row if found
+          paymentRow.style.display = 'none'; // Always hide payment row during search
+
+          // If a match is found, update the found flag
+          if (rowFound) {
+            found = true;
+          }
+        }
+      });
+
+      // Show/hide "No record found" message
+      if (!found && noRecordMessage) {
+        noRecordMessage.style.display = 'block';
+      } else if (noRecordMessage) {
+        noRecordMessage.style.display = 'none';
+      }
+
+      // If the search input is cleared, reset to show all students and hide payment lists
+      if (input === '') {
+        rows.forEach(function(row) {
+          if (row.id.startsWith("student-row")) {
+            row.style.display = ''; // Show all rows
+          }
+        });
+        noRecordMessage.style.display = 'none'; // Hide "No record found" message
+        var allPayments = document.querySelectorAll('.payment-details');
+        allPayments.forEach(function(paymentRow) {
+          paymentRow.style.display = 'none'; // Hide all payment rows
+        });
+      }
+    });
+  </script>
+
+  <script src="../js/script.js"></script>
+
+</body>
+</html>

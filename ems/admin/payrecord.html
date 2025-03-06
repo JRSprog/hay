@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Record</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="shortcut icon" href="../img/blogo.png" type="x-icon">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="menu-container">
+      <button class="burger-button" onclick="toggleSidebar()">☰</button>
+    </div>
+    <div class="dropdown">
+      <button class="dropdown-button"><i class="fa-solid fa-user"></i></button>
+      <div class="dropdown-content">
+        <a href="#">Option 1</a>
+        <a href="#">Option 2</a>
+        <a href="#">Option 3</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="close">
+        <span class="close-sidebar" onclick="toggleSidebar()"><i class="fa-solid fa-arrow-left"></i></span>
+        <img src="../img/blogo.png" alt="Image" class="sidebar-image">
+        <p class="sidebar-text">Your text goes here.</p>
+    </div>
+    
+    <div class="sidebar-content">
+      <a href="#" class="sidebar-item"><i class="fa-solid fa-house"></i>&nbsp; Dashboard</a>
+      <a href="approval.html" class="sidebar-item"><i class="fa-solid fa-credit-card"></i>&nbsp; Online Approval</a>
+      <a href="strecord.html" class="sidebar-item"><i class="fa-solid fa-clipboard-list"></i>&nbsp; Student Information</a>
+      <a href="payrecord.html" class="sidebar-item"><i class="fa-solid fa-clipboard-list"></i>&nbsp; Payment Record</a>
+      <a href="onfees.html" class="sidebar-item"><i class="fa-solid fa-clipboard-list"></i>&nbsp; Ongoing Fees</a>
+    </div>
+  </div>
+
+<div class="main-content">
+<div class="strecord">
+    <h1>Student Record</h1>
+    <div class="search-container">
+            <i class="fa-solid fa-magnifying-glass"></i><br><br>
+            <input type="search" id="searchInput" placeholder="Search here...">
+        </div><br><br>  
+    <table  id="dataTable">
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Particular</th>
+                <th>Amount</th>
+                <th>Payment Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>s21016623</td>
+                <td>jakmo</td>
+                <td>jakma</td>
+                <td></td>
+                <td>jakmi</td>
+                <td>dsdsd</td>
+            </tr> 
+        </tbody>
+    </table>
+</div>
+</div>
+  <script>
+    document.getElementById('searchInput').addEventListener('keyup', function() {
+  var input = this.value.toLowerCase();
+  var rows = document.querySelectorAll('#dataTable tbody tr');
+
+  rows.forEach(function(row) {
+      var cells = row.getElementsByTagName('td');
+      var found = false;
+
+      for (var i = 0; i < cells.length; i++) {
+          if (cells[i].textContent.toLowerCase().indexOf(input) > -1) {
+              found = true;
+              break;
+          }
+      }
+
+      row.style.display = found ? '' : 'none';
+  });
+});
+
+  </script>
+  <script src="../js/script.js"></script>
+
+</body>
+</html>

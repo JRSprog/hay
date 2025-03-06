@@ -1,0 +1,629 @@
+.main-content {
+    margin-left: 15px;
+    display: flex;
+    align-items: flex-start; /* Align to top instead of center */
+    padding: 20px;
+    gap: 10px;
+}
+
+.parent {
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: 650px; /* Set a fixed height */
+    overflow-y: auto; /* Allow vertical scrolling */
+}
+
+
+.parent h1 {
+    text-align: center;
+}
+
+.child {
+    width: 48%; /* Ensure child takes up 48% of the parent's width */
+    background-color: aliceblue;
+    box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.child p {
+    margin: 10px 0;
+    color: #333333;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.child strong {
+    color: #333;
+}
+
+/* Zoom image style */
+.zoom-image {
+    max-width: 30%;
+    height: auto;
+    cursor: zoom-in;
+    align-self: center;
+    display: flex;
+    justify-self: center;
+}
+
+.app {
+    background-color: #4635B1;
+    color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    width: 100px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    margin-left: 42px;
+}
+.app:hover {
+    color: #333333;
+}
+
+.reject {
+    background-color: #4635B1;
+    color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    width: 100px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+}
+.reject:hover {
+    color: #f00;
+}
+
+
+/* Form container */
+.form-container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    height: 650px; /* Set a fixed height */
+    overflow-y: auto;
+}
+
+.form-container h1 {
+    text-align: center;
+}
+
+.search-container {
+    position: sticky; 
+    top: 0;
+}
+
+.search-container input {
+    padding: 15px 15px 15px 35px;
+    border-radius: 7px;
+    border: 1px solid #ddd;
+    width: 50%;
+}
+
+.search-container i {
+    position: absolute;
+    left: 15px; 
+    top: 73%;
+    transform: translateY(-50%); 
+    color: #444; 
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th {
+    border: none;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid gray;
+}
+
+td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid gray;
+    color: #414141;
+}
+
+.update {
+    background-color: #020871;
+    color: #fff;
+    padding: 13px 17px;
+    border: none;
+    border-radius: 25px;
+}
+.update:hover {
+    background-color: #1FB7FF;
+}
+
+.list th {
+    background-color: #6439FF;
+}
+
+.overlay2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.overlay-image {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.close2 {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+.close2:hover {
+    color: #f00;
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Black with transparency */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 100%;
+    text-align: center;
+}
+
+/* Close button */
+.close1 {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Form Styles */
+#updateForm input {
+    padding: 10px;
+    margin: 10px;
+    width: 80%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#updateForm button {
+    background-color: darkblue;
+    color: white;
+    width: 100px;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 3px 3px gray;
+    padding: 10px 15px;
+}
+
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 10px;
+        flex-direction: column;
+    }
+
+    .parent {
+        flex-direction: row;
+        gap: 5px;
+    }
+
+    .parent, .form-container {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .form-container {
+        margin-top: 20px;
+    }
+
+    table {
+        font-size: 12px;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+    .child p {
+        font-size: 14px;
+    }
+
+    .zoom-image {
+        max-width: 30%;
+    }
+
+    .app, .reject {
+        width: 80%;
+        margin-left: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content {
+        padding: 10px;
+    }
+
+    .child p {
+        font-size: 12px;
+    }
+
+    .child button {
+        flex-direction: column;
+    }
+
+    th, td {
+        padding: 6px;
+    }
+
+    table {
+        font-size: 10px;
+    }
+
+    .zoom-image {
+        max-width: 30%;
+    }
+}
+
+
+
+/********* student record css *********/
+/*******//************/
+/* Styling for the student record container */
+/* Styling for the student record container */
+.strecord {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    height: 600px;
+    overflow-y: auto;
+}
+
+/* Heading styling */
+.strecord h1 {
+    text-align: center;
+    font-size: 34px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Table Styling */
+ /* Apply different colors for odd and even table rows */
+ table tbody tr:nth-child(odd) {
+    background-color: white; /* Light gray for odd rows */
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #d1d1d3; /* Slightly darker gray for even rows */
+}
+
+/* Optional: style for the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow-y: auto;
+}
+
+th, td {
+    border: none;
+    border-bottom: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
+    font-size: 18px;
+}
+
+th {
+    background-color: #33322e; /* Green header */
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .strecord {
+        padding: 10px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+    .strecord h1 {
+        font-size: 20px;
+    }
+}
+
+/* Adding some spacing for last column and last row */
+td:last-child {
+    padding-right: 20px;
+}
+
+
+
+
+/*********** onfees ito para alam mo haahahh ***************/
+
+
+.main-content {
+    display: flex;
+    justify-content: center;  /* Horizontally center */
+    align-items: flex-start;  /* Vertically center */
+    height: 100vh;  /* Full viewport height */
+    width: 100%;  /* Ensure it takes full width */
+}
+
+/* Style for the .stfees container */
+/* Base styles for .stfees */
+.stfees {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    width: 100%; /* Make it responsive by setting width to 100% */
+    max-width: 1200px; /* Max width for larger screens */
+    margin-top: 30px;
+    box-sizing: border-box;
+    height: 620px;
+    overflow-y: auto;
+}
+
+/* Style for the heading */
+.stfees h2 {
+    font-size: 34px;
+    color: #333;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+/* Style for the separator div */
+.sep {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Allow items to wrap for small screens */
+}
+
+/* Style for the search icon */
+.sep .fa-magnifying-glass {
+    color: #888;
+    margin-left: 10px;
+    position: absolute;
+}
+
+/* Style for the search input */
+#search {
+    padding: 15px 15px 15px 30px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 350px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* Styling the select dropdown */
+.select {
+    padding: 15px 10px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    margin-top: 20px;
+    border-radius: 10px;
+    color: #333;
+    width: 100%; /* Make it responsive */
+    max-height: 50px;
+    overflow-y: auto;
+}
+
+.select option {
+    border: none;
+    border-bottom: 1px solid #ddd;
+    color: #333333;
+    padding: 10px;
+}
+
+/* Style for the Add fees button */
+#modal2 {
+    background-color: #007BFF; /* Blue background */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 4px;
+    width: 150px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Style for the Add fees button on hover */
+#modal2:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Modal styles */
+.modal3 {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
+    padding-top: 60px;
+}
+
+/* Modal content */
+.modal-content3 {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content3 h2 {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+/* Close button */
+.close3 {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close3:hover,
+.close3:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Style for the form inside modal */
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form input {
+    margin-bottom: 15px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form button {
+    background-color: #344CB7; /* Green button */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.form button:hover {
+    background-color: #200957;
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+    .stfees {
+        padding: 15px;  /* Reduce padding for smaller screens */
+        width: 100%;
+        margin-left: -17px;
+    }
+    .stfees h2 {
+        font-size: 28px;  /* Make the heading smaller */
+        margin-bottom: 30px;
+    }
+    .sep {
+        flex-direction: column;  /* Stack the search input and button vertically */
+        align-items: flex-start;  /* Align items to the left */
+    }
+    .sep .fa-magnifying-glass {
+        margin-top: 15px;
+    }
+    #search {
+        width: 100%;  /* Make search input full-width on small screens */
+        margin-bottom: 10px;  /* Add some spacing between search input and button */
+    }
+    #modal2 {
+        width: 100%;  /* Make the "Add Fees" button full width */
+        padding: 12px 15px;
+    }
+    .select {
+        width: 100%;  /* Make the select dropdown full-width */
+        padding: 15px 10px;
+    }
+    .modal-content {
+        width: 90%;  /* Make modal content width responsive */
+        margin-left: 15px;
+    }
+}
+/* Additional responsiveness for very small screens (e.g., phones in portrait mode) */
+@media screen and (max-width: 480px) {
+    .stfees h2 {
+        font-size: 24px;  /* Further reduce the heading font size */
+    }
+    #search {
+        font-size: 12px;  /* Make the search input font smaller */
+    }
+    #modal2 {
+        padding: 10px;
+        font-size: 14px;  /* Reduce the font size for smaller screens */
+    }
+}

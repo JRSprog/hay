@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="shortcut icon" href="../img/blogo.png" type="x-icon">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<style>
+           .dash {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            width: 80%;
+            margin: 40px auto;
+        }
+
+        .dash h1 {
+            font-size: 42px;
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .dashadd {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 20%;
+            margin: 20px auto;
+            transition: background-color 0.3s ease;
+            margin-bottom: 50px;
+        }
+
+        .dashadd:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        ul li {
+            display: inline-block;
+            margin: 10px;
+        }
+
+        ul li img {
+            width: 250px;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        /* Modal Styles */
+        .modal4 {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
+            padding-top: 60px;
+        }
+
+        .modal-content4 {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-content4 h2 {
+            font-size: 35px;
+            text-align: center;
+            margin-bottom: 30px;
+            margin-top: 20px;
+        }
+
+        .close4 {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close4:hover,
+        .close4:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .form1 label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .form1 input {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        .form1 button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form1 button:hover {
+            background-color: #218838;
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .dash {
+                width: 90%;
+                padding: 15px;
+                margin-left: 5px;
+            }
+
+            .dashadd {
+                font-size: 14px;
+                width: 50%;
+            }
+
+            .modal-content4 {
+                width: 80%;
+                margin-top: 100px;
+            }
+
+            .form1 input, .form1 button {
+                font-size: 14px;
+            }
+        }
+</style>
+
+  <!-- Header -->
+  <header>
+    <div class="menu-container">
+      <button class="burger-button" onclick="toggleSidebar()">☰</button>
+    </div>
+    <div class="dropdown">
+      <button class="dropdown-button"><i class="fa-solid fa-user"></i></button>
+      <div class="dropdown-content">
+        <a href="#">Option 1</a>
+        <a href="#">Option 2</a>
+        <a href="#">Option 3</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="close">
+        <span class="close-sidebar" onclick="toggleSidebar()"><i class="fa-solid fa-arrow-left"></i></span>
+        <img src="../img/blogo.png" alt="Image" class="sidebar-image">
+        <p class="sidebar-text">Your text goes here.</p>
+    </div>
+    
+    <div class="sidebar-content">
+      <a href="#" class="sidebar-item"><i class="fa-solid fa-house"></i>&nbsp; Dashboard</a>
+      <a href="approval.html" class="sidebar-item"><i class="fa-solid fa-credit-card"></i>&nbsp; Online Approval</a>
+      <a href="strecord.html" class="sidebar-item"><i class="fa-solid fa-clipboard-list"></i>&nbsp; Student Information</a>
+      <a href="payrecord.html" class="sidebar-item"><i class="fa-solid fa-clipboard-list"></i>&nbsp; Payment Record</a>
+      <a href="onfees.html" class="sidebar-item"><i class="fa-solid fa-clipboard-list"></i>&nbsp; Ongoing Fees</a>
+    </div>
+  </div>
+
+<div class="main-content">
+    <div class="dash">
+        <h1>Announcenment</h1>
+        <button class="dashadd" id="modal4">Add Announcenment</button>
+        <ul>
+            <li><img src="../img/blogo.png" alt=""></li>
+        </ul>
+    </div>
+    <div id="myModal4" class="modal4">
+       <div class="modal-content4">
+           <span class="close4">&times;</span>
+           <h2>Add Announcenment</h2>
+           <form class="form1">
+               <label for="fee-name">Insert Image:</label>
+               <input type="file" id="fee-name" name="fee-name" required>
+               <br>
+               <label for="datetime">Select Date and Time: </label>
+               <input type="datetime-local" id="datetime"><br>
+               <button type="submit">Submit</button>
+           </form>
+       </div>
+    </div>
+</div>
+
+<script>
+    // Function to set today's date and time automatically
+window.onload = function() {
+  const today = new Date(); // Get current date and time
+  const dd = String(today.getDate()).padStart(2, '0'); // Day
+  const mm = String(today.getMonth() + 1).padStart(2, '0'); // Month (0-indexed)
+  const yyyy = today.getFullYear(); // Year
+
+  const hours = String(today.getHours()).padStart(2, '0'); // Hours
+  const minutes = String(today.getMinutes()).padStart(2, '0'); // Minutes
+
+  // Format the date as YYYY-MM-DD and time as HH:mm
+  const formattedDateTime = `${yyyy}-${mm}-${dd}T${hours}:${minutes}`;
+
+  // Set the value of the input to today's date and time
+  document.getElementById('datetime').value = formattedDateTime;
+}
+
+
+const modal4 = document.getElementById("myModal4");
+        const btn = document.getElementById("modal4");
+        const span = document.getElementsByClassName("close4")[0];
+
+        // Open the modal when the button is clicked
+        btn.onclick = function() {
+            modal4.style.display = "block";
+        }
+
+        // Close the modal when the user clicks on <span> (x)
+        span.onclick = function() {
+            modal4.style.display = "none";
+        }
+
+        // Close the modal if the user clicks anywhere outside of the modal
+        window.onclick = function(event) {
+            if (event.target == modal4) {
+                modal4.style.display = "none";
+            }
+        }
+
+
+</script>
+<script src="../js/script.js"></script>
+
+</body>
+</html>
