@@ -51,6 +51,21 @@
             z-index: 10;
         }
 
+        .burger-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--dark);
+            font-size: 1.25rem;
+            cursor: pointer;
+            margin-right: 1rem;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
         .search-bar {
             display: flex;
             align-items: center;
@@ -194,6 +209,7 @@
             position: sticky;
             top: 0;
             overflow-y: auto;
+            transition: transform 0.3s ease;
         }
 
         .logo {
@@ -397,6 +413,24 @@
             color: #f8fafc;
         }
 
+        /* Dark mode text and icon colors */
+        body.dark-mode .card-title,
+        body.dark-mode .card-value,
+        body.dark-mode .card-change,
+        body.dark-mode .notification-header h4,
+        body.dark-mode .notification-item p,
+        body.dark-mode .notification-item small,
+        body.dark-mode .user-dropdown-item,
+        body.dark-mode .burger-btn {
+            color: #f8fafc;
+        }
+
+        body.dark-mode .card-header i,
+        body.dark-mode .notification i,
+        body.dark-mode .user-dropdown-item i {
+            color: #f8fafc;
+        }
+
         /* Responsive Design */
         @media (max-width: 1200px) {
             .search-bar {
@@ -438,51 +472,55 @@
                 grid-template-rows: auto 1fr auto;
             }
 
+            .burger-btn {
+                display: block;
+            }
+
             aside {
                 position: fixed;
-                bottom: 0;
+                top: 0;
                 left: 0;
-                right: 0;
-                height: auto;
-                width: 100%;
-                padding: 0.5rem;
-                z-index: 100;
-                box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
-                height: 60px;
+                bottom: 0;
+                transform: translateX(-100%);
+                z-index: 1000;
+                width: 280px;
+                height: 100vh;
+                transition: transform 0.3s ease;
+            }
+
+            aside.show {
+                transform: translateX(0);
             }
 
             .logo {
-                display: none;
+                display: flex;
+                padding: 0 1.5rem 1.5rem;
+            }
+
+            .logo h1 {
+                display: block;
             }
 
             .nav-menu {
-                flex-direction: row;
-                justify-content: space-around;
-                padding: 0;
+                flex-direction: column;
+                padding: 0 1rem;
             }
 
             .nav-item {
-                flex-direction: column;
-                gap: 0.25rem;
-                font-size: 0.7rem;
-                padding: 0.5rem;
-            }
-
-            .nav-item i {
-                font-size: 1.1rem;
+                justify-content: flex-start;
+                padding: 0.75rem 1rem;
             }
 
             .nav-item span {
-                font-size: 0.7rem;
+                display: block;
             }
 
             .menu-title {
-                display: none;
+                display: block;
             }
 
             main {
                 padding: 1rem;
-                margin-bottom: 60px;
             }
 
             .search-bar {
@@ -579,6 +617,10 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
+        body.dark-mode .mobile-search-container {
+            background-color: #1e293b;
+        }
+
         .mobile-search-container.show {
             display: flex;
         }
@@ -596,6 +638,30 @@
             font-size: 1.2rem;
             cursor: pointer;
         }
+
+        body.dark-mode .mobile-search-close {
+            color: #f8fafc;
+        }
+
+        /* Overlay for sidebar */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        body.dark-mode .sidebar-overlay {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .sidebar-overlay.show {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -610,13 +676,21 @@
         </button>
     </div>
 
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay"></div>
+
     <header>
-        <button class="mobile-search-btn">
-            <i class="fas fa-search"></i>
-        </button>
-        <div class="search-bar">
-            <i class="fas fa-search"></i>
-            <input type="text" placeholder="Search students, teachers...">
+        <div class="header-left">
+            <button class="burger-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <button class="mobile-search-btn">
+                <i class="fas fa-search"></i>
+            </button>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search students, teachers...">
+            </div>
         </div>
         <div class="user-actions">
             <div class="notification">
@@ -666,7 +740,7 @@
     <aside>
         <div class="logo">
             <i class="fas fa-graduation-cap"></i>
-            <h1>PDBNHS</h1>
+            <h1>SchoolSys</h1>
         </div>
         
         <div class="menu-title">Main</div>
@@ -791,12 +865,27 @@
     </main>
 
     <footer>
-        <p>© 2026 Paso De Blas National High School. All rights reserved.</p>
+        <p>© 2023 SchoolSys Management Dashboard. All rights reserved.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Toggle sidebar
+            const burgerBtn = document.querySelector('.burger-btn');
+            const sidebar = document.querySelector('aside');
+            const sidebarOverlay = document.querySelector('.sidebar-overlay');
+            
+            burgerBtn.addEventListener('click', function() {
+                sidebar.classList.toggle('show');
+                sidebarOverlay.classList.toggle('show');
+            });
+            
+            sidebarOverlay.addEventListener('click', function() {
+                sidebar.classList.remove('show');
+                sidebarOverlay.classList.remove('show');
+            });
+
             // Toggle notification dropdown
             const notificationIcon = document.querySelector('.notification');
             const notificationDropdown = document.querySelector('.notification-dropdown');
@@ -879,6 +968,12 @@
                     e.preventDefault();
                     navItems.forEach(nav => nav.classList.remove('active'));
                     this.classList.add('active');
+                    
+                    // Close sidebar on mobile after clicking a nav item
+                    if (window.innerWidth <= 768) {
+                        sidebar.classList.remove('show');
+                        sidebarOverlay.classList.remove('show');
+                    }
                 });
             });
 
