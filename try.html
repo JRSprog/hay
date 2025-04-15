@@ -43,7 +43,7 @@
         header {
             grid-area: header;
             background-color: white;
-            padding: 1rem 2rem;
+            padding: 1rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -83,7 +83,7 @@
         .user-actions {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            gap: 1rem;
         }
 
         .notification {
@@ -141,7 +141,7 @@
         .user-profile {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.5rem;
             cursor: pointer;
             position: relative;
         }
@@ -265,7 +265,7 @@
         /* Main Content Styles */
         main {
             grid-area: main;
-            padding: 2rem;
+            padding: 1.5rem;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1.5rem;
@@ -327,77 +327,83 @@
         footer {
             grid-area: footer;
             background-color: white;
-            padding: 1rem 2rem;
+            padding: 1rem;
             text-align: center;
             font-size: 0.85rem;
             color: var(--gray);
             border-top: 1px solid var(--gray-light);
         }
 
-       /* Dark Mode Styles */
-body.dark-mode {
-    background-color: #0f172a;
-    color: #f8fafc;
-}
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
 
-body.dark-mode header,
-body.dark-mode aside,
-body.dark-mode footer,
-body.dark-mode .card {
-    background-color: #1e293b;
-    color: #f8fafc;
-}
+        body.dark-mode header,
+        body.dark-mode aside,
+        body.dark-mode footer,
+        body.dark-mode .card {
+            background-color: #1e293b;
+            color: #f8fafc;
+        }
 
-body.dark-mode .search-bar {
-    background-color: #334155;
-}
+        body.dark-mode .search-bar {
+            background-color: #334155;
+        }
 
-body.dark-mode .search-bar input {
-    color: #f8fafc;
-}
+        body.dark-mode .search-bar input {
+            color: #f8fafc;
+        }
 
-body.dark-mode .nav-item:not(.active):hover {
-    background-color: #334155;
-}
+        body.dark-mode .nav-item:not(.active):hover {
+            background-color: #334155;
+        }
 
-body.dark-mode .menu-title {
-    color: #94a3b8;
-}
+        body.dark-mode .menu-title {
+            color: #94a3b8;
+        }
 
-/* Fixed Sidebar Icons in Dark Mode */
-body.dark-mode .nav-item:not(.active) i {
-    color: #94a3b8; /* Light gray for inactive icons */
-}
+        /* Fixed Sidebar Icons in Dark Mode */
+        body.dark-mode .nav-item:not(.active) i {
+            color: #94a3b8;
+        }
 
-body.dark-mode .nav-item.active i {
-    color: white; /* White for active icons */
-}
+        body.dark-mode .nav-item.active i {
+            color: white;
+        }
 
-/* Fixed Dropdown Styles for Dark Mode */
-body.dark-mode .user-dropdown {
-    background-color: #1e293b;
-    border: 1px solid #334155;
-}
+        /* Fixed Dropdown Styles for Dark Mode */
+        body.dark-mode .user-dropdown {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+        }
 
-body.dark-mode .user-dropdown-item {
-    color: #f8fafc;
-}
+        body.dark-mode .user-dropdown-item {
+            color: #f8fafc;
+        }
 
-body.dark-mode .user-dropdown-item:hover {
-    background-color: #334155;
-}
+        body.dark-mode .user-dropdown-item:hover {
+            background-color: #334155;
+        }
 
-body.dark-mode .notification-dropdown {
-    background-color: #1e293b;
-    border: 1px solid #334155;
-}
+        body.dark-mode .notification-dropdown {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+        }
 
-body.dark-mode .notification-item {
-    border-bottom-color: #334155;
-    color: #f8fafc;
-}
+        body.dark-mode .notification-item {
+            border-bottom-color: #334155;
+            color: #f8fafc;
+        }
 
         /* Responsive Design */
+        @media (max-width: 1200px) {
+            .search-bar {
+                width: 300px;
+            }
+        }
+
         @media (max-width: 992px) {
             body {
                 grid-template-columns: 80px 1fr;
@@ -482,21 +488,132 @@ body.dark-mode .notification-item {
             .search-bar {
                 display: none;
             }
+
+            .mobile-search-btn {
+                display: block !important;
+            }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 576px) {
+            header {
+                padding: 0.75rem;
+            }
+
+            .user-profile span, .user-actions .notification span {
+                display: none;
+            }
+
+            .user-actions {
+                gap: 0.75rem;
+            }
+
+            .user-avatar {
+                width: 32px;
+                height: 32px;
+                font-size: 0.9rem;
+            }
+
+            main {
+                padding: 0.75rem;
+                gap: 1rem;
+            }
+
             .card {
+                padding: 1rem;
                 grid-column: 1 / -1;
             }
 
-            .user-profile span {
+            .card-header {
+                margin-bottom: 0.75rem;
+            }
+
+            .card-value {
+                font-size: 1.75rem;
+            }
+
+            .card[style*="span 2"] {
+                grid-column: 1 / -1;
+            }
+
+            .notification-dropdown {
+                width: 280px;
+                right: -20px;
+            }
+
+            .user-dropdown {
+                width: 180px;
+                right: -10px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .user-profile i {
                 display: none;
             }
+
+            .notification-dropdown {
+                width: 260px;
+                right: -40px;
+            }
+        }
+
+        /* Mobile Search Button */
+        .mobile-search-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--gray);
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        .mobile-search-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 1rem;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .mobile-search-container.show {
+            display: flex;
+        }
+
+        .mobile-search-container .search-bar {
+            width: 100%;
+            max-width: none;
+        }
+
+        .mobile-search-close {
+            margin-left: 1rem;
+            background: none;
+            border: none;
+            color: var(--gray);
+            font-size: 1.2rem;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
+    <!-- Mobile Search Container (hidden by default) -->
+    <div class="mobile-search-container">
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search students, teachers...">
+        </div>
+        <button class="mobile-search-close">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
     <header>
+        <button class="mobile-search-btn">
+            <i class="fas fa-search"></i>
+        </button>
         <div class="search-bar">
             <i class="fas fa-search"></i>
             <input type="text" placeholder="Search students, teachers...">
@@ -744,13 +861,15 @@ body.dark-mode .notification-item {
             const searchBar = document.querySelector('.search-bar');
             const searchInput = document.querySelector('.search-bar input');
             
-            searchInput.addEventListener('focus', function() {
-                searchBar.classList.add('focused');
-            });
-            
-            searchInput.addEventListener('blur', function() {
-                searchBar.classList.remove('focused');
-            });
+            if (searchInput) {
+                searchInput.addEventListener('focus', function() {
+                    searchBar.classList.add('focused');
+                });
+                
+                searchInput.addEventListener('blur', function() {
+                    searchBar.classList.remove('focused');
+                });
+            }
 
             // Navigation menu active state
             const navItems = document.querySelectorAll('.nav-item');
@@ -763,6 +882,23 @@ body.dark-mode .notification-item {
                 });
             });
 
+            // Mobile search functionality
+            const mobileSearchBtn = document.querySelector('.mobile-search-btn');
+            const mobileSearchContainer = document.querySelector('.mobile-search-container');
+            const mobileSearchClose = document.querySelector('.mobile-search-close');
+            
+            if (mobileSearchBtn && mobileSearchContainer && mobileSearchClose) {
+                mobileSearchBtn.addEventListener('click', function() {
+                    mobileSearchContainer.classList.add('show');
+                    const searchInput = mobileSearchContainer.querySelector('input');
+                    if (searchInput) searchInput.focus();
+                });
+                
+                mobileSearchClose.addEventListener('click', function() {
+                    mobileSearchContainer.classList.remove('show');
+                });
+            }
+
             // Create charts
             createCharts();
 
@@ -772,156 +908,164 @@ body.dark-mode .notification-item {
 
         function createCharts() {
             // Students Chart
-            const studentsCtx = document.getElementById('students-chart').getContext('2d');
-            new Chart(studentsCtx, {
-                type: 'line',
-                data: {
-                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-                    datasets: [{
-                        label: 'Students',
-                        data: [1000, 1050, 1100, 1150, 1200, 1247],
-                        borderColor: '#6366f1',
-                        backgroundColor: 'rgba(99, 102, 241, 0.1)',
-                        borderWidth: 2,
-                        tension: 0.4,
-                        fill: true
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
+            const studentsCtx = document.getElementById('students-chart');
+            if (studentsCtx) {
+                new Chart(studentsCtx.getContext('2d'), {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                        datasets: [{
+                            label: 'Students',
+                            data: [1000, 1050, 1100, 1150, 1200, 1247],
+                            borderColor: '#6366f1',
+                            backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                            borderWidth: 2,
+                            tension: 0.4,
+                            fill: true
+                        }]
                     },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            grid: {
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
                                 display: false
                             }
                         },
-                        x: {
-                            grid: {
-                                display: false
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: {
+                                    display: false
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    display: false
+                                }
                             }
                         }
                     }
-                }
-            });
+                });
+            }
 
             // Teachers Chart
-            const teachersCtx = document.getElementById('teachers-chart').getContext('2d');
-            new Chart(teachersCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['2020', '2021', '2022', '2023'],
-                    datasets: [{
-                        label: 'Teachers',
-                        data: [65, 70, 75, 78],
-                        backgroundColor: 'rgba(244, 63, 94, 0.7)',
-                        borderColor: 'rgba(244, 63, 94, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
+            const teachersCtx = document.getElementById('teachers-chart');
+            if (teachersCtx) {
+                new Chart(teachersCtx.getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['2020', '2021', '2022', '2023'],
+                        datasets: [{
+                            label: 'Teachers',
+                            data: [65, 70, 75, 78],
+                            backgroundColor: 'rgba(244, 63, 94, 0.7)',
+                            borderColor: 'rgba(244, 63, 94, 1)',
+                            borderWidth: 1
+                        }]
                     },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            grid: {
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
                                 display: false
                             }
                         },
-                        x: {
-                            grid: {
-                                display: false
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: {
+                                    display: false
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    display: false
+                                }
                             }
                         }
                     }
-                }
-            });
+                });
+            }
 
             // Attendance Chart
-            const attendanceCtx = document.getElementById('attendance-chart').getContext('2d');
-            new Chart(attendanceCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Present', 'Absent'],
-                    datasets: [{
-                        data: [94.6, 5.4],
-                        backgroundColor: [
-                            'rgba(16, 185, 129, 0.7)',
-                            'rgba(239, 68, 68, 0.1)'
-                        ],
-                        borderColor: [
-                            'rgba(16, 185, 129, 1)',
-                            'rgba(239, 68, 68, 0.3)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    cutout: '70%',
-                    plugins: {
-                        legend: {
-                            display: false
+            const attendanceCtx = document.getElementById('attendance-chart');
+            if (attendanceCtx) {
+                new Chart(attendanceCtx.getContext('2d'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Present', 'Absent'],
+                        datasets: [{
+                            data: [94.6, 5.4],
+                            backgroundColor: [
+                                'rgba(16, 185, 129, 0.7)',
+                                'rgba(239, 68, 68, 0.1)'
+                            ],
+                            borderColor: [
+                                'rgba(16, 185, 129, 1)',
+                                'rgba(239, 68, 68, 0.3)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '70%',
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
                         }
                     }
-                }
-            });
+                });
+            }
 
             // Classes Chart
-            const classesCtx = document.getElementById('classes-chart').getContext('2d');
-            new Chart(classesCtx, {
-                type: 'line',
-                data: {
-                    labels: ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6'],
-                    datasets: [{
-                        label: 'Classes',
-                        data: [8, 7, 7, 6, 7, 7],
-                        borderColor: '#10b981',
-                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                        borderWidth: 2,
-                        tension: 0.4,
-                        fill: true
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
+            const classesCtx = document.getElementById('classes-chart');
+            if (classesCtx) {
+                new Chart(classesCtx.getContext('2d'), {
+                    type: 'line',
+                    data: {
+                        labels: ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6'],
+                        datasets: [{
+                            label: 'Classes',
+                            data: [8, 7, 7, 6, 7, 7],
+                            borderColor: '#10b981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            borderWidth: 2,
+                            tension: 0.4,
+                            fill: true
+                        }]
                     },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            grid: {
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
                                 display: false
-                            },
-                            ticks: {
-                                stepSize: 1
                             }
                         },
-                        x: {
-                            grid: {
-                                display: false
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: {
+                                    display: false
+                                },
+                                ticks: {
+                                    stepSize: 1
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    display: false
+                                }
                             }
                         }
                     }
-                }
-            });
+                });
+            }
         }
 
         function populateActivityFeed() {
@@ -934,16 +1078,17 @@ body.dark-mode .notification-item {
             ];
 
             const activityFeed = document.getElementById('activity-feed');
-            
-            activities.forEach(activity => {
-                const activityItem = document.createElement('div');
-                activityItem.className = 'notification-item';
-                activityItem.innerHTML = `
-                    <p><strong>${activity.action}</strong></p>
-                    <small>${activity.time} • ${activity.user}</small>
-                `;
-                activityFeed.appendChild(activityItem);
-            });
+            if (activityFeed) {
+                activities.forEach(activity => {
+                    const activityItem = document.createElement('div');
+                    activityItem.className = 'notification-item';
+                    activityItem.innerHTML = `
+                        <p><strong>${activity.action}</strong></p>
+                        <small>${activity.time} • ${activity.user}</small>
+                    `;
+                    activityFeed.appendChild(activityItem);
+                });
+            }
         }
     </script>
 </body>
